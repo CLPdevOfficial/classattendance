@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+
+        <form id="attendanceForm" method="POST">
+            <label>Class:</label>
+            <select name="class" id="class">
+                {% for cls in classes %}
+                    <option value="{{ cls }}">{{ cls }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Subject:</label>
+            <input type="text" name="subject" id="subject" required>
+
+            <label>Date:</label>
+            <input type="date" name="date" id="date" required>
+
+            <label>Start Time:</label>
+            <input type="time" name="start_time" id="start_time" value="07:00" required>
+
+            <label>End Time:</label>
+            <input type="time" name="end_time" id="end_time" value="09:00" required>
+
+            <label>Students:</label>
+            <select name="selected_students" id="studentSelect" multiple>
+                {% for student in students %}
+                    <option value="{{ student }}">{{ student }}</option>
+                {% endfor %}
+            </select>
+
+            <h2>Attendance Table</h2>
+            <table id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Student Name</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <button type="submit">Generate Attendance</button>
+            <button type="button" id="exportExcelBtn">Export to Excel</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>
