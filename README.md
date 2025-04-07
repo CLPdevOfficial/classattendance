@@ -22,8 +22,8 @@ This is a simple web application built with Flask for managing and exporting cla
 1.  **Clone the Repository:**
 
     ```bash
-    git clone <repository_url>
-    cd <repository_directory>
+    git clone https://github.com/CLPdevOfficial/classattendace.git
+    cd classattendace
     ```
 
 2.  **Create a Virtual Environment (Recommended):**
