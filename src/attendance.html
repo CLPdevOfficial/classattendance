@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Sheet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='astyle.css') }}">
+</head>
+<body>
+    <div class="header-container">
+        <h2>វិទ្យាល័យហ៊ុនសែនស្នួល</h2>
+        <!-- <p class="sub-header">Hunsen Snoul Highschool</p> -->
+         <h4>កំណត់អវត្តមាន - ថ្នាក់ {{ class_name }}</h4>
+    </div>
+
+    <div class="details">
+        <p><strong>កាលបរិច្ឆេទ:</strong> {{ date }}</p>
+        <p><strong>ម៉ោង:</strong> {{ time_range }}</p>
+        <p><strong>មុខវិជ្ជា:</strong> {{ subject }}</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>លរ.</th>
+                <th>ឈ្មោះ</th>
+                <th>មានច្បាប់</th>
+                <th>គ្មានច្បាប់</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student, attendance in students %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student }}</td>
+                <td>{% if attendance == "P" %}✓{% endif %}</td>
+                <td>{% if attendance == "A" %}✓{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+    <script link></script>
+</html>
